@@ -12,7 +12,9 @@ import com.masai.repository.BenificiaryRepository;
 
 @Service
 public class BenificiaryDaoImplements implements BenificiaryDao {
+
 	@Autowired
+
 	private BenificiaryRepository repo;
 
 	@Override

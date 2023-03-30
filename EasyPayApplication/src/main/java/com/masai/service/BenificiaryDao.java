@@ -10,4 +10,5 @@ public interface BenificiaryDao {
 	public Benificiary deleteBenificiary(Integer BenificiaryId) throws BenificiaryException;
 	public Benificiary ViewBenificiary(Integer BenificiaryId) throws BenificiaryException;
 	public List<Benificiary> ViewAllBenificiary() throws BenificiaryException;
+
 }
