@@ -2,9 +2,10 @@ package com.masai.service;
 
 import java.util.List;
 
+import com.masai.model.BankAccount;
 import com.masai.model.Customer;
 
-public interface BankAccount {
+public interface BankAccountService {
 	
 //	<-----------------------------Neha---------------------------------->
 	
@@ -19,5 +20,6 @@ public interface BankAccount {
 	public Customer showBalance(String mobileNumber);
 	
 //	-------------------------------------------------------------------------------
+
 
 }
