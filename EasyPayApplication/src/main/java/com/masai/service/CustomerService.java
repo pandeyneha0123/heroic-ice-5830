@@ -2,29 +2,15 @@ package com.masai.service;
 
 
 
+import com.masai.exception.CustomerException;
 import com.masai.model.Customer;
 
 public interface CustomerService {
+
+	public Customer createCustomer(Customer customer) throws CustomerException;
 	
+	public Customer updateCustomer(Customer customer, String key) throws CustomerException;
 
-//	----------------------------Neha--------------------------------------------->
-	
-  public Customer RegisterCustomer(Customer customer) throws CustomerException;
-
-	
-	
-	public Customer createCustomer(Customer customer);
-
-	public String customerLogin(CustomerLoginDTO customerDto);
-
-	public String customerLogout(String customerId);
-
-	public CustomerSession checkCustomerSession(String customerId);
-
-	public Customer viewCustomerDetails(String customerId);
-
-	------------------------------------------------------------------------------>
-
-
+	public Customer viewCustomerDetails(Integer customerId) throws CustomerException;
 	
 }

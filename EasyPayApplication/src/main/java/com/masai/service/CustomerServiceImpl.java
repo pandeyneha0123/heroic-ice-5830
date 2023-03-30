@@ -6,27 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.CustomerException;
+import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
-import com.masai.model.Wallet;
 
-import com.masai.repository.CustomerDao;
 import com.masai.repository.CustomerRepository;
-import com.masai.repository.CustomerSessionDao;
+import com.masai.repository.SessionRepository;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
-//	------------------------------------------neha-------------------------------------------->
 	
+		@Autowired
+		private CustomerRepository cDao;
 
 		@Autowired
-		private CustomerDao cDao;
+		private SessionRepository csDao;
 
-		@Autowired
-		private CustomerSessionDao csDao;
-
+		
 		@Override
-		public Customer createCustomer(Customer customer) {
-			Customer existingCustomer = cDao.findByMobileNumber(customer.getMobileNumber());
+		public Customer createCustomer(Customer customer) throws CustomerException {
+			Customer existingCustomer = cDao.findByEmail(customer.getEmail());
+			
 			if (existingCustomer == null) {
 				return cDao.save(customer);
 			} else {
@@ -34,56 +33,29 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 
 		}
-
+		
 		@Override
-		public String customerLogin(CustomerLoginDTO customerDto) {
-			Customer customer = cDao.findByMobileNumberAndPassword(customerDto.getMobileNumber(),
-					customerDto.getPassword());
-
-			if (customer != null) {
-				CustomerSession cs = new CustomerSession();
-				cs.setCustomerId(customer.getCustomerId());
-				cs.setTimeStamp(LocalDateTime.now());
-				cs.setUniqueId(RandomString.make(8));
-
-				CustomerSession cSession = csDao.save(cs);
-				return cSession.toString();
-
-			} else {
-				throw new CustomerException("Wrong credentials");
+		public Customer updateCustomer(Customer customer, String key) throws CustomerException {
+			CurrentUserSession logedInUser = csDao.findByUuid(key);
+			
+			if(logedInUser == null) {
+				throw new CustomerException("Please provide valid key to update the customer");
 			}
-
-		}
-
-		@Override
-		public String customerLogout(String customerId) {
-			CustomerSession cSession = csDao.findByUniqueId(customerId);
-			if (cSession != null) {
-				csDao.delete(cSession);
-				return "Logged out !";
-			} else {
-				throw new CustomerException("User not logged in with this number!");
+			
+			if(logedInUser.getUserId() == customer.getCId()) {
+				return cDao.save(customer);
 			}
-
-		}
-
-		@Override
-		public CustomerSession checkCustomerSession(String customerId) {
-			CustomerSession cSession = csDao.findBycustomerId(customerId);
-			if (cSession != null) {
-
-				return cSession;
-			} else {
-				return null;
+			else {
+				throw new CustomerException("Invalid customer details, please login first");
 			}
-
 		}
+		
 
 		@Override
-		public Customer viewCustomerDetails(String customerId) {
-			CustomerSession cSession = csDao.findBycustomerId(customerId);
-			if (cSession != null) {
-				Optional<Customer> opt = cDao.findById(cSession.getId());
+		public Customer viewCustomerDetails(Integer customerId) throws CustomerException {
+			Optional<CurrentUserSession> cSession = csDao.findById(customerId);
+			if (cSession.isPresent()) {
+				Optional<Customer> opt = cDao.findById(customerId);
 				Customer customer = opt.get();
 				return customer;
 			} else {
@@ -91,6 +63,6 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 		}
 
-	
-//	--------------------------------------------------------------------------------------------
+		
+
 }
