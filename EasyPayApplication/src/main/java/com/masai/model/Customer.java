@@ -19,7 +19,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 //1.customer(id Gv,Moble string,password String, emial email,Wallet wallet (foren ket),)
-@Component
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

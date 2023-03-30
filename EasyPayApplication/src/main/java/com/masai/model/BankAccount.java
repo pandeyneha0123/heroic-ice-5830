@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 
 //BankAccount(id Gv , AccountNumber String , ifc String , Branch String , Ballence Double , BankName String , 
 //Wallet wallet,Customerid int)
-@Component
+
 @Entity
 @Data
 @AllArgsConstructor

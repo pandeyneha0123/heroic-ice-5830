@@ -19,7 +19,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 //Wallet(id Gv,Amount double, LastDate LocalDate,List<BankAccont> wallet)
-@Component
+
 @Entity
 @Data
 @AllArgsConstructor
