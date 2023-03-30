@@ -1,9 +1,5 @@
 package com.masai.model;
 
-import java.time.LocalDate;
-import java.util.List;
-
-import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

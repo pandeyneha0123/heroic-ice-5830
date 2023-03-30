@@ -1,7 +1,6 @@
 package com.masai.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -32,6 +31,5 @@ public class BillPayment {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "wallet_Id")
     private Wallet walletId;
-    
 
 }

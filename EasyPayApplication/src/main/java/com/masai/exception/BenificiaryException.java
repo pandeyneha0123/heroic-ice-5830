@@ -9,4 +9,5 @@ public class BenificiaryException extends RuntimeException {
 		super(message);
 	}
 
+
 }
