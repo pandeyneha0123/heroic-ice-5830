@@ -13,6 +13,7 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 //Wallet(id Gv,Amount double, LastDate LocalDate,List<BankAccont> wallet)
 
@@ -20,20 +21,24 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Wallet {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer walletId;
     private Double amount;
     private LocalDate lastUpdate;
-
+    
+    
     @OneToMany
     @JoinColumn(name = "walletId")
     private List<BankAccount> banks;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "walletId")
-//    @JoinColumn(name = "bill_Id")#*#*#*#*#*
     List<BillPayment> bills;
+    
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "walletId")
+    List<Transection> transections;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "walletId")
