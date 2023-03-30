@@ -2,10 +2,7 @@ package com.masai.model;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
