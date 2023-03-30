@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 //5.BillPayment(BillPay id,billType String ,amount Double,PaymentDate LocalDate,wallet wallet)
-@Component
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -32,5 +32,6 @@ public class BillPayment {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "wallet_Id")
     private Wallet walletId;
+    
 
 }

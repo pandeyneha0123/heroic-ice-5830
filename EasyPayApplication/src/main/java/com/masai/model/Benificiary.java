@@ -16,7 +16,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 //BenificialDetil (BeniId Gv,name String ,MobleNumer String address address(hash-a relatioship))
-@Component
+
 @Entity
 @Data
 @AllArgsConstructor
