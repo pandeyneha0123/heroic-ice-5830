@@ -2,8 +2,9 @@ package com.masai.model;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -15,10 +16,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 //1.customer(id Gv,Moble string,password String, emial email,Wallet wallet (foren ket),)
+
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

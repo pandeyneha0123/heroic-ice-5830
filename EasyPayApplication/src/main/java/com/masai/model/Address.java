@@ -1,6 +1,6 @@
 package com.masai.model;
 
-import jakarta.persistence.Embeddable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,4 +16,5 @@ public class Address {
 	private String state;
 	private String pincode;
 	private String AddressType;
+
 }

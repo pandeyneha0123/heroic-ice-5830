@@ -2,6 +2,8 @@ package com.masai.model;
 
 import java.time.LocalDate;
 
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 //5.BillPayment(BillPay id,billType String ,amount Double,PaymentDate LocalDate,wallet wallet)
+
 @Entity
 @Data
 @AllArgsConstructor

@@ -2,6 +2,7 @@ package com.masai.model;
 
 import java.util.List;
 
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +13,6 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-//BenificialDetil (BeniId Gv,name String ,MobleNumer String address address(hash-a relatioship))
 @Entity
 @Data
 @AllArgsConstructor

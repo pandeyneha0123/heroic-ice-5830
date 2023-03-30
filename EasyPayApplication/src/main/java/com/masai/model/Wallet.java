@@ -2,7 +2,6 @@ package com.masai.model;
 
 import java.time.LocalDate;
 import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -14,6 +13,7 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 //Wallet(id Gv,Amount double, LastDate LocalDate,List<BankAccont> wallet)
 
 @Entity
@@ -38,5 +38,5 @@ public class Wallet {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "walletId")
     private List<Benificiary> benificiarylist;
-	
+
 }
