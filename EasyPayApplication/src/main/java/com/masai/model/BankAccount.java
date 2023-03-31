@@ -34,5 +34,7 @@ public class BankAccount {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_Id")
     private Customer customer;
+
+	
 	
 }

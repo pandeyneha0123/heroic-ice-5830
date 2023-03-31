@@ -7,19 +7,17 @@ public interface CustomerService {
 	
 //	----------------------------Neha--------------------------------------------->
 	
-//	public Customer RegisterCustomer(Customer customer) throws CustomerException;
+
 	
 	
-	public Customer createCustomer(Customer customer);
 
-	public String customerLogin(CustomerLoginDTO customerDto);
-
-	public String customerLogout(String customerId);
-
-	public CustomerSession checkCustomerSession(String customerId);
-
-	public Customer viewCustomerDetails(String customerId);
+	public Customer createCustomer(Customer customer) throws CustomerException;
 	
+
+
+	public Customer updateCustomer(Customer customer, String key) throws CustomerException;
+
+	public Customer viewCustomerDetails(Integer customerId, String key) throws CustomerException;
 //	------------------------------------------------------------------------------>
 
 	

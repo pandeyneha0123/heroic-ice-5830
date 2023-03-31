@@ -1,17 +1,20 @@
 package com.masai.service;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
-import org.hibernate.mapping.List;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.CustomerException;
 import com.masai.model.BankAccount;
+import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
 import com.masai.model.Wallet;
 import com.masai.repository.AccountDao;
 import com.masai.repository.CustomerDao;
+import com.masai.repository.SessionRepository;
 import com.masai.repository.WalletDao;
 
 @Service
@@ -28,30 +31,33 @@ public class BankAccountServiceImpl implements BankAccountService {
 
 	@Autowired
 	private WalletDao wDao;
+	
+	@Autowired
+	SessionRepository session;
+	
 
 	@Override
-	public Customer addAccount(BankAccount Account, String CustomerId) {
+	public Customer addAccount(BankAccount Account, String key) throws CustomerException {
 
 
-		CustomerSession session = csDao.checkCustomerSession(CustomerId);
+		CurrentUserSession responseSession = session.findByUuid(key);
 
-		if (session != null) {
-			Optional<Customer> opt = cDao.findById(session.getId());
+		if (responseSession != null) {
+			Optional<Customer> opt = cDao.findById(responseSession.getUserId());
+			
 			Customer customer = opt.get();
 
 			List<BankAccount> banks = customer.getWallet().getBanks();
 
 			boolean flag = false;
 			for (BankAccount bank : banks) {
-				if (bank.getAccountNo().equals(Account.getAccountNo())) {
+				if (bank.getAccountNumber().equals(Account.getAccountNumber())) {
 					flag = true;
 				}
 			}
 
 			// return desired bank account
 			if (!flag) {
-				// associate wallet
-				Account.setWallet(customer.getWallet());
 				// add bank account
 				customer.getWallet().getBanks().add(Account);
 				cDao.save(customer);
@@ -67,39 +73,43 @@ public class BankAccountServiceImpl implements BankAccountService {
 	}
 
 	@Override
-	public Customer deleteAccount(Integer accountId, String customerId) {
-		CustomerSession session = csDao.checkCustomerSession(customerId);
+	public Customer deleteAccount(Integer accountId, String key) throws CustomerException{
+		
+		CurrentUserSession responseSession = session.findByUuid(key);
 
-		if (session != null) {
+		if (responseSession != null) {
+			
 			Optional<BankAccount> opt = bDao.findById(accountId);
+			
 			if (opt.isPresent()) {
 				bDao.delete(opt.get());
-				Optional<Customer> optc = cDao.findById(session.getId());
+				Optional<Customer> optc = cDao.findById(responseSession.getUserId());
 				Customer customer = optc.get();
 				return customer;
 			} else {
-				throw new CustomerException("Wrong bank id");
+				throw new CustomerException("Wrong bank id....");
 			}
 
 		} else {
-			throw new CustomerException("Customer not logged in");
+			throw new CustomerException("Customer not logged in....");
 		}
 
 	}
 
 	@Override
-	public BankAccount ViewAccount(String accountNo, String customerId) {
-		CustomerSession session = csDao.checkCustomerSession(customerId);
+	public BankAccount ViewAccount(String accountNo, String key) throws CustomerException{
+		
+		CurrentUserSession responseSession = session.findByUuid(key);
 		BankAccount bankAccount = null;
 
-		if (session != null) {
-			Optional<Customer> opt = cDao.findById(session.getId());
+		if (responseSession != null) {
+			Optional<Customer> opt = cDao.findById(responseSession.getUserId());
 			Customer customer = opt.get();
 
 			List<BankAccount> banks = customer.getWallet().getBanks();
 
 			for (BankAccount bank : banks) {
-				if (bank.getAccountNo().equals(accountNo)) {
+				if (bank.getAccountNumber().equals(accountNo)) {
 					bankAccount = bank;
 				}
 			}
@@ -117,12 +127,14 @@ public class BankAccountServiceImpl implements BankAccountService {
 	}
 
 	@Override
-	public List<BankAccount> ViewAllAccount(Integer wid, String customerId) {
-		CustomerCurrentSession session = csDao.checkCustomerSession(customerIdId);
-		if (session != null) {
+	public List<BankAccount> ViewAllAccount(Integer wid, String key) throws CustomerException{
+		
+		CurrentUserSession responseSession = session.findByUuid(key);
+		
+		if (responseSession != null) {
 			Optional<Wallet> opt = wDao.findById(wid);
 			if (opt.isPresent()) {
-				List banks = opt.get().getBanks();
+				List<BankAccount>  banks = opt.get().getBanks();
 				return banks;
 			} else {
 				throw new CustomerException("Wronge wallet id");
@@ -134,13 +146,20 @@ public class BankAccountServiceImpl implements BankAccountService {
 	}
 
 	@Override
-	public Customer showBalance(String mobileNo) {
-		Customer customer = cDao.findByMobileNumber(mobileNo);
-		if (customer != null) {
-			
-			return customer;
-		} else {
-			throw new CustomerException("No customer found with mobile number " + mobileNo);
-		}
+	public BigDecimal showBalance(String email) throws CustomerException {
+	    
+		// Retrieve the balance of the customer with the given email from the database
+	    BigDecimal balance = session.getBalanceByEmail(email);
+	    
+	 // If the balance is null or negative, throw an exception
+	    if (balance == null || balance.compareTo(BigDecimal.ZERO) < 0) {
+	        throw new CustomerException("Invalid balance");
+	    }
+	    
+	    // Return the balance
+	    return balance;
 	}
+
+
+	
 }
