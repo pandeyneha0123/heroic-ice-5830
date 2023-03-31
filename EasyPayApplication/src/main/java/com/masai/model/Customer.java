@@ -27,6 +27,7 @@ public class Customer {
 	private String name;
 	private String password;
 	private String email;
+	private String phone;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "wallet_Id")
@@ -39,4 +40,5 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "account_Id")
 	private BankAccount account;
+
 }
