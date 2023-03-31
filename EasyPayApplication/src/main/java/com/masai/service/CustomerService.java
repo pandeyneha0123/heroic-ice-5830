@@ -8,7 +8,7 @@ public interface CustomerService {
 
 //	----------------------------Neha--------------------------------------------->
 	
-	public Customer RegisterCustomer(Customer customer) throws CustomerException;
+//	public Customer RegisterCustomer(Customer customer) throws CustomerException;
 	
 //	------------------------------------------------------------------------------>
 
