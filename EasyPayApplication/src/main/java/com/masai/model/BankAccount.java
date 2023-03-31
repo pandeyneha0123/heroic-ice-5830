@@ -1,6 +1,8 @@
 package com.masai.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -30,7 +32,8 @@ public class BankAccount {
     private String Branch;
     private Double ballence;
     private String bankName;
-
+    
+    @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_Id")
     private Customer customer;

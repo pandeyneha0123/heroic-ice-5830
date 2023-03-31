@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -41,8 +42,9 @@ public class Transection {
 	private double ammount;
 	private String description;
 	
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "wallet_Id")
-	private Wallet wallet;
+	private Wallet walletId;
 	
 }

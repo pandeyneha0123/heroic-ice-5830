@@ -2,6 +2,9 @@ package com.masai.model;
 
 import java.time.LocalDate;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,17 +32,20 @@ public class Wallet {
     private Double amount;
     private LocalDate lastUpdate;
     
-    
+    @JsonIgnore
     @OneToMany
     @JoinColumn(name = "walletId")
     private List<BankAccount> banks;
-
+    
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "walletId")
     List<BillPayment> bills;
     
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "walletId")
     List<Transection> transections;
-
+    
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "walletId")
     private List<Benificiary> benificiarylist;

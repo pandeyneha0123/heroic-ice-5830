@@ -13,6 +13,6 @@ public interface CustomerService {
 
 	public Customer updateCustomer(Customer customer, String key) throws CustomerException;
 
-	public Customer viewCustomerDetails(Integer customerId) throws CustomerException;
+	public Customer viewCustomerDetails(Integer customerId, String key) throws CustomerException;
 	
 }
