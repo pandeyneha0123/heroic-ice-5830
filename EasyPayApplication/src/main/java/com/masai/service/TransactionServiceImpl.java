@@ -1,6 +1,7 @@
 package com.masai.service;
 
 import java.time.LocalDate;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import com.masai.model.TransactionDto;
 import com.masai.model.Transection;
 import com.masai.model.Wallet;
 import com.masai.repository.TransactionDao;
+//import com.masai.repository.TransactionDao;
 import com.masai.repository.WalletDao;
 
 @Service
@@ -39,20 +41,20 @@ public class TransactionServiceImpl implements TransactionService {
 		t1.setAmmount(tran.getAmmount());
 		t1.setDescription(tran.getDescription());
 		t1.setTransectionType(tran.getTransectionType());
-		t1.setWallet(existingWallet);
+		t1.setWalletId(existingWallet);
 		existingWallet.getTransections().add(t1);
 		wd.save(existingWallet);
 		return tran;
 	}
 
-	@Override
-	public List<Transection> viewTransactionByWalletId(Integer id) throws TransactionException {
-		List<Transection> l1 = tra.findByWalletId(id);
-		if(l1.size() == 0) {
-			throw new TransactionException("No transaction done by this wallet id");
-		}
-		return l1;
-	}
+//	@Override
+//	public List<Transection> viewTransactionByWalletId(Integer id) throws TransactionException {
+//		List<Transection> l1 = tra.findByWalletId(id);
+//		if(l1.size() == 0) {
+//			throw new TransactionException("No transaction done by this wallet id");
+//		}
+//		return l1;
+//	}
 
 	@Override
 	public List<Transection> viewTransactionByDate(String D1, String D2) throws TransactionException {
@@ -72,6 +74,12 @@ public class TransactionServiceImpl implements TransactionService {
 			throw new TransactionException("No transaction done....");
 		}
 		return list;
+	}
+
+	@Override
+	public List<Transection> viewTransactionByWalletId(Integer id) throws TransactionException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

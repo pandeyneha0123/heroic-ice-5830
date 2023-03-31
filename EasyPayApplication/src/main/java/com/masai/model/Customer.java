@@ -2,6 +2,8 @@ package com.masai.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -29,15 +31,18 @@ public class Customer {
 	private String password;
 	private String email;
 	private String phone;
-
+	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "wallet_Id")
 	private Wallet wallet;
-
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_Id")
 	private List<Address> address;
-
+	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "account_Id")
 	private BankAccount account;

@@ -36,6 +36,7 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		@Override
 		public Customer updateCustomer(Customer customer, String key) throws CustomerException {
+			
 			CurrentUserSession logedInUser = csDao.findByUuid(key);
 			
 			if(logedInUser == null) {
@@ -52,14 +53,17 @@ public class CustomerServiceImpl implements CustomerService {
 		
 
 		@Override
-		public Customer viewCustomerDetails(Integer customerId) throws CustomerException {
+		public Customer viewCustomerDetails(Integer customerId, String key) throws CustomerException {
+			
+			
 			Optional<CurrentUserSession> cSession = csDao.findById(customerId);
+			
 			if (cSession.isPresent()) {
 				Optional<Customer> opt = cDao.findById(customerId);
 				Customer customer = opt.get();
 				return customer;
 			} else {
-				throw new CustomerException("User must be logged in!");
+				throw new CustomerException("User must be logged in !");
 			}
 		}
 

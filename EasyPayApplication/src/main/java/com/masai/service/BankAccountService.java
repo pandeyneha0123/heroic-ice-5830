@@ -1,25 +1,23 @@
 package com.masai.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
+import com.masai.exception.CustomerException;
 import com.masai.model.BankAccount;
 import com.masai.model.Customer;
 
 public interface BankAccountService {
 	
-//	<-----------------------------Neha---------------------------------->
 	
-	public Customer addAccount(BankAccount Account, String customerId);
+	public Customer addAccount(BankAccount Account, String key) throws CustomerException;
 
-	public Customer deleteAccount(Integer BankAccountId, String customerId);
+	public Customer deleteAccount(Integer BankAccountId, String key) throws CustomerException;
 
-	public BankAccount ViewAccount(String AccountNumber, String customerId);
+	public BankAccount ViewAccount(String AccountNumber, String key) throws CustomerException;
 
-	public List<BankAccount> ViewAllAccount(Integer wid, String customerId);
+	public List<BankAccount> ViewAllAccount(Integer wId, String key) throws CustomerException;
 
-	public Customer showBalance(String mobileNumber);
-	
-//	-------------------------------------------------------------------------------
-
+	public BigDecimal showBalance(String email) throws CustomerException;
 
 }
