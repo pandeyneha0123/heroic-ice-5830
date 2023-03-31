@@ -10,6 +10,10 @@ import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
 
 import com.masai.repository.CustomerRepository;
+
+import com.masai.repository.CustomerSessionDao;
+import com.masai.repository.SessionRepository;
+
 import com.masai.repository.SessionRepository;
 
 @Service
@@ -67,6 +71,5 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 		}
 
-		
 
 }

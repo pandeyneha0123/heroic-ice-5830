@@ -1,6 +1,5 @@
 package com.masai.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.masai.exception.CustomerException;
 import com.masai.model.Customer;
 import com.masai.service.CustomerService;
+
 
 @RestController
 public class CustomerController {
@@ -50,3 +50,4 @@ public class CustomerController {
 		
 	}
 }
+

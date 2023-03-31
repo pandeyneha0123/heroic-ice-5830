@@ -1,7 +1,8 @@
 package com.masai.service;
 
-import java.util.Optional;
 import java.math.BigDecimal;
+import java.util.Optional;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -146,12 +147,20 @@ public class BankAccountServiceImpl implements BankAccountService {
 
 	@Override
 	public BigDecimal showBalance(String email) throws CustomerException {
-		// TODO Auto-generated method stub
-		return null;
+
+	    
+		// Retrieve the balance of the customer with the given email from the database
+	    BigDecimal balance = session.getBalanceByEmail(email);
+	    
+	 // If the balance is null or negative, throw an exception
+	    if (balance == null || balance.compareTo(BigDecimal.ZERO) < 0) {
+	        throw new CustomerException("Invalid balance");
+	    }
+	    
+	    // Return the balance
+	    return balance;
 	}
 
-	
-
-	
+	}
 
 }

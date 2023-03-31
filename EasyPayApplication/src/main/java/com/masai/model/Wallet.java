@@ -51,4 +51,52 @@ public class Wallet {
     @JoinColumn(name = "walletId")
     private List<Benificiary> benificiarylist;
 
+	public Integer getWalletId() {
+		return walletId;
+	}
+
+	public void setWalletId(Integer walletId) {
+		this.walletId = walletId;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+	public LocalDate getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public void setLastUpdate(LocalDate lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+
+	public List<BankAccount> getBanks() {
+		return banks;
+	}
+
+	public void setBanks(List<BankAccount> banks) {
+		this.banks = banks;
+	}
+
+	public List<BillPayment> getBills() {
+		return bills;
+	}
+
+	public void setBills(List<BillPayment> bills) {
+		this.bills = bills;
+	}
+
+	public List<Benificiary> getBenificiarylist() {
+		return benificiarylist;
+	}
+
+	public void setBenificiarylist(List<Benificiary> benificiarylist) {
+		this.benificiarylist = benificiarylist;
+	}
+
 }
