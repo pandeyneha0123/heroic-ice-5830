@@ -29,6 +29,7 @@ public class Wallet {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer walletId;
+	private String customerName;
     private Double amount;
     private LocalDate lastUpdate;
     
