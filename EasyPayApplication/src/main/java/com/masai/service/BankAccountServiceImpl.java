@@ -148,7 +148,8 @@ public class BankAccountServiceImpl implements BankAccountService {
 	@Override
 	public BigDecimal showBalance(String email) throws CustomerException {
 	    
-		// Retrieve the balance of the customer with the given email from the database
+		// Retrieve the balance of the customer
+		
 	    BigDecimal balance = session.getBalanceByEmail(email);
 	    
 	 // If the balance is null or negative, throw an exception
