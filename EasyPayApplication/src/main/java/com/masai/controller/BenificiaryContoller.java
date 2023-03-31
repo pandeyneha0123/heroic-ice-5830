@@ -22,25 +22,25 @@ public class BenificiaryContoller {
 	private BenificiaryDao dao;
 	
 	@PostMapping("/addBenificiary")
-	public ResponseEntity<Benificiary>  addBenificiary(@RequestBody Benificiary benificial,@RequestParam String key) {
+	public ResponseEntity<Benificiary>  addBenificiary(@RequestBody Benificiary benificial,@RequestParam("key") String key) {
 		Benificiary addBenificiary = dao.addBenificiary(benificial,key);
 		return  new ResponseEntity<>(addBenificiary,HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/ViewBenificiary/{id}")
-	public ResponseEntity<Benificiary> ViewBenificiary(@PathVariable Integer id,@RequestParam String key) {
+	public ResponseEntity<Benificiary> ViewBenificiary(@PathVariable Integer id,@RequestParam("key") String key) {
 		Benificiary ViewBenificiaryByid = dao.ViewBenificiary(id,key);
 		return new ResponseEntity<>(ViewBenificiaryByid,HttpStatus.OK) ;
 	}
 	
 	@DeleteMapping("/deleteBenificiary/{id}")
-	public ResponseEntity<Benificiary> deleteBenificiary(@PathVariable Integer id,@RequestParam String key) {
+	public ResponseEntity<Benificiary> deleteBenificiary(@PathVariable Integer id,@RequestParam("key") String key) {
 		Benificiary deleteBenificiaryByid = dao.deleteBenificiary(id,key);
 		return new ResponseEntity<>(deleteBenificiaryByid,HttpStatus.OK) ;
 	}
 	
 	@GetMapping("/ViewAllBenificiary")
-	public ResponseEntity<List<Benificiary>> ViewAllBenificiary(@RequestParam String key) {
+	public ResponseEntity<List<Benificiary>> ViewAllBenificiary(@RequestParam("key") String key) {
 		 List<Benificiary> viewAllBenificiary = dao.ViewAllBenificiary(key);
 		return new ResponseEntity<>(viewAllBenificiary,HttpStatus.OK);
 	}
