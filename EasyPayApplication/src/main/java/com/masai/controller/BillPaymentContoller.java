@@ -19,12 +19,12 @@ public class BillPaymentContoller {
 	private BillPaymentDao dao;
 	
 	@PostMapping("/addBillPayment")
-	public ResponseEntity<BillPayment> addBillPayment(@RequestBody BillPayment billpayment,@RequestParam String key){
+	public ResponseEntity<BillPayment> addBillPayment(@RequestBody BillPayment billpayment,@RequestParam("key") String key){
 		BillPayment addBillPayment = dao.addBillPayment(billpayment,key);
 		return new ResponseEntity<>(addBillPayment,HttpStatus.CREATED);
 	}
 	@PostMapping("/ViewBillPayment/{id}")
-	public ResponseEntity<BillPayment> ViewBillPayment(@PathVariable Integer id,@RequestParam String key){
+	public ResponseEntity<BillPayment> ViewBillPayment(@PathVariable Integer id,@RequestParam("key") String key){
 		BillPayment viewBillPayment = dao.ViewBillPayment(id,key);
 		return new ResponseEntity<>(viewBillPayment,HttpStatus.CREATED);
 	}
