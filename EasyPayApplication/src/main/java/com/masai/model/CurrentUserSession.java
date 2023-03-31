@@ -22,8 +22,8 @@ public class CurrentUserSession {
 	private Integer userId;
 	private String uuid;
 	private LocalDateTime localDateTime;
-	public Integer getUserId() {
-		// TODO Auto-generated method stub
-		return null;
+
 	}
+
 }
+

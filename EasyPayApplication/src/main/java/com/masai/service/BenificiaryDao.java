@@ -6,8 +6,9 @@ import com.masai.exception.BenificiaryException;
 import com.masai.model.Benificiary;
 
 public interface BenificiaryDao {
-	public Benificiary addBenificiary(Benificiary benificiary) throws BenificiaryException;
-	public Benificiary deleteBenificiary(Integer BenificiaryId) throws BenificiaryException;
-	public Benificiary ViewBenificiary(Integer BenificiaryId) throws BenificiaryException;
-	public List<Benificiary> ViewAllBenificiary() throws BenificiaryException;
+	public Benificiary addBenificiary(Benificiary benificiary,String key) throws BenificiaryException;
+	public Benificiary deleteBenificiary(Integer BenificiaryId,String key) throws BenificiaryException;
+	public Benificiary ViewBenificiary(Integer BenificiaryId,String key) throws BenificiaryException;
+	public List<Benificiary> ViewAllBenificiary(String key) throws BenificiaryException;
+
 }

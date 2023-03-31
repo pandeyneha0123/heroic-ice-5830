@@ -9,7 +9,6 @@ import com.masai.model.Customer;
 
 public interface BankAccountService {
 	
-//	<-----------------------------Neha---------------------------------->
 	
 	public Customer addAccount(BankAccount Account, String key) throws CustomerException;
 
@@ -20,8 +19,5 @@ public interface BankAccountService {
 	public List<BankAccount> ViewAllAccount(Integer wId, String key) throws CustomerException;
 
 	public BigDecimal showBalance(String email) throws CustomerException;
-	
-//	-------------------------------------------------------------------------------
-
 
 }
