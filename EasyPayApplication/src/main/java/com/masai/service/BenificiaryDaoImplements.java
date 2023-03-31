@@ -7,18 +7,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.BenificiaryException;
+import com.masai.exception.LoginException;
 import com.masai.model.Benificiary;
+import com.masai.model.CurrentUserSession;
 import com.masai.repository.BenificiaryRepository;
+import com.masai.repository.SessionRepository;
 
 @Service
 public class BenificiaryDaoImplements implements BenificiaryDao {
 
 	@Autowired
-
 	private BenificiaryRepository repo;
+	@Autowired
+	private SessionRepository repo2;
+	
 
 	@Override
-	public Benificiary addBenificiary(Benificiary benificiary) throws BenificiaryException {
+	public Benificiary addBenificiary(Benificiary benificiary,String key) throws BenificiaryException {
+		CurrentUserSession useHereOrNot = repo2.findByUuid(key);
+		if(useHereOrNot==null) {
+			throw new LoginException("please Enter a valid key");
+		}
 		Optional<Benificiary> checkISorNot = repo.findById(benificiary.getBenificialId());
 		if(!checkISorNot.isEmpty()) {
 			throw new BenificiaryException("Benificiary is already their ...");
@@ -30,7 +39,11 @@ public class BenificiaryDaoImplements implements BenificiaryDao {
 	}
 
 	@Override
-	public Benificiary deleteBenificiary(Integer BenificiaryId) throws BenificiaryException {
+	public Benificiary deleteBenificiary(Integer BenificiaryId,String key) throws BenificiaryException {
+		CurrentUserSession useHereOrNot = repo2.findByUuid(key);
+		if(useHereOrNot==null) {
+			throw new LoginException("please Enter a valid key");
+		}
 		Optional<Benificiary> checkISorNot = repo.findById(BenificiaryId);
 		if(checkISorNot.isEmpty()) {
 			throw new BenificiaryException("Enter the correct Benificiary Id");
@@ -44,7 +57,11 @@ public class BenificiaryDaoImplements implements BenificiaryDao {
 	}
 
 	@Override
-	public Benificiary ViewBenificiary(Integer BenificiaryId) throws BenificiaryException {
+	public Benificiary ViewBenificiary(Integer BenificiaryId,String key) throws BenificiaryException {
+		CurrentUserSession useHereOrNot = repo2.findByUuid(key);
+		if(useHereOrNot==null) {
+			throw new LoginException("please Enter a valid key");
+		}
 		Optional<Benificiary> checkISorNot = repo.findById(BenificiaryId);
 		if(checkISorNot.isEmpty()) {
 			throw new BenificiaryException("Enter the correct Benificiary Id");
@@ -56,7 +73,11 @@ public class BenificiaryDaoImplements implements BenificiaryDao {
 	}
 
 	@Override
-	public List<Benificiary> ViewAllBenificiary() throws BenificiaryException {
+	public List<Benificiary> ViewAllBenificiary(String key) throws BenificiaryException {
+		CurrentUserSession useHereOrNot = repo2.findByUuid(key);
+		if(useHereOrNot==null) {
+			throw new LoginException("please Enter a valid key");
+		}
 		 List<Benificiary> AllBenificiary = repo.findAll();
 		if(AllBenificiary.isEmpty()) {
 			throw new BenificiaryException("No Any Benificiary Detail here....");

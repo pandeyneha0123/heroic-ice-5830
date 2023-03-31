@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.model.Benificiary;
@@ -21,26 +22,26 @@ public class BenificiaryContoller {
 	private BenificiaryDao dao;
 	
 	@PostMapping("/addBenificiary")
-	public ResponseEntity<Benificiary>  addBenificiary(@RequestBody Benificiary benificial) {
-		Benificiary addBenificiary = dao.addBenificiary(benificial);
+	public ResponseEntity<Benificiary>  addBenificiary(@RequestBody Benificiary benificial,@RequestParam String key) {
+		Benificiary addBenificiary = dao.addBenificiary(benificial,key);
 		return  new ResponseEntity<>(addBenificiary,HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/ViewBenificiary/{id}")
-	public ResponseEntity<Benificiary> ViewBenificiary(@PathVariable Integer id) {
-		Benificiary ViewBenificiaryByid = dao.ViewBenificiary(id);
+	public ResponseEntity<Benificiary> ViewBenificiary(@PathVariable Integer id,@RequestParam String key) {
+		Benificiary ViewBenificiaryByid = dao.ViewBenificiary(id,key);
 		return new ResponseEntity<>(ViewBenificiaryByid,HttpStatus.OK) ;
 	}
 	
 	@DeleteMapping("/deleteBenificiary/{id}")
-	public ResponseEntity<Benificiary> deleteBenificiary(@PathVariable Integer id) {
-		Benificiary deleteBenificiaryByid = dao.deleteBenificiary(id);
+	public ResponseEntity<Benificiary> deleteBenificiary(@PathVariable Integer id,@RequestParam String key) {
+		Benificiary deleteBenificiaryByid = dao.deleteBenificiary(id,key);
 		return new ResponseEntity<>(deleteBenificiaryByid,HttpStatus.OK) ;
 	}
 	
 	@GetMapping("/ViewAllBenificiary")
-	public ResponseEntity<List<Benificiary>> ViewAllBenificiary() {
-		 List<Benificiary> viewAllBenificiary = dao.ViewAllBenificiary();
+	public ResponseEntity<List<Benificiary>> ViewAllBenificiary(@RequestParam String key) {
+		 List<Benificiary> viewAllBenificiary = dao.ViewAllBenificiary(key);
 		return new ResponseEntity<>(viewAllBenificiary,HttpStatus.OK);
 	}
 	
