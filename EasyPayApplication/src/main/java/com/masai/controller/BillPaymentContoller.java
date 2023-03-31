@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.model.BillPayment;
@@ -18,13 +19,13 @@ public class BillPaymentContoller {
 	private BillPaymentDao dao;
 	
 	@PostMapping("/addBillPayment")
-	public ResponseEntity<BillPayment> addBillPayment(@RequestBody BillPayment billpayment){
-		BillPayment addBillPayment = dao.addBillPayment(billpayment);
+	public ResponseEntity<BillPayment> addBillPayment(@RequestBody BillPayment billpayment,@RequestParam String key){
+		BillPayment addBillPayment = dao.addBillPayment(billpayment,key);
 		return new ResponseEntity<>(addBillPayment,HttpStatus.CREATED);
 	}
 	@PostMapping("/ViewBillPayment/{id}")
-	public ResponseEntity<BillPayment> ViewBillPayment(@PathVariable Integer id){
-		BillPayment viewBillPayment = dao.ViewBillPayment(id);
+	public ResponseEntity<BillPayment> ViewBillPayment(@PathVariable Integer id,@RequestParam String key){
+		BillPayment viewBillPayment = dao.ViewBillPayment(id,key);
 		return new ResponseEntity<>(viewBillPayment,HttpStatus.CREATED);
 	}
 	
