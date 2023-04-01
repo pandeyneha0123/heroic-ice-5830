@@ -13,7 +13,7 @@ import com.masai.model.BillPayment;
 import com.masai.service.BillPaymentDao;
 
 @RestController
-public class BillPaymentController {
+public class BillPaymentContoller {
 
 	@Autowired
 	private BillPaymentDao dao;
@@ -31,3 +31,5 @@ public class BillPaymentController {
 	
 	
 }
+//1. for getting json documentation: /v3/api-docs/
+//2. for getting ui documentation: /swagger-ui.html

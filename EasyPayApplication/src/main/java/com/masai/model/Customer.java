@@ -2,9 +2,10 @@ package com.masai.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,9 +18,9 @@ import lombok.NoArgsConstructor;
 
 //1.customer(id Gv,Moble string,password String, emial email,Wallet wallet (foren ket),)
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Entity
 public class Customer {
 	@Id
@@ -28,15 +29,19 @@ public class Customer {
 	private String name;
 	private String password;
 	private String email;
-
+	private String phone;
+	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "wallet_Id")
 	private Wallet wallet;
-
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_Id")
 	private List<Address> address;
-
+	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "account_Id")
 	private BankAccount account;
@@ -73,6 +78,14 @@ public class Customer {
 		this.email = email;
 	}
 
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	public Wallet getWallet() {
 		return wallet;
 	}
@@ -96,4 +109,6 @@ public class Customer {
 	public void setAccount(BankAccount account) {
 		this.account = account;
 	}
+	
+
 }

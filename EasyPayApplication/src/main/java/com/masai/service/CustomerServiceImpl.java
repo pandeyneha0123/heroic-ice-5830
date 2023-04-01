@@ -1,16 +1,21 @@
 package com.masai.service;
 
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.exception.CustomerException;
+import com.masai.model.BankAccount;
 import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
 
 import com.masai.repository.CustomerRepository;
+
 import com.masai.repository.SessionRepository;
+
 @Service
 public class CustomerServiceImpl implements CustomerService {
 	
@@ -23,6 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		@Override
 		public Customer createCustomer(Customer customer) throws CustomerException {
+		
 			Customer existingCustomer = cDao.findByEmail(customer.getEmail());
 			
 			if (existingCustomer == null) {
@@ -42,7 +48,7 @@ public class CustomerServiceImpl implements CustomerService {
 				throw new CustomerException("Please provide valid key to update the customer");
 			}
 			
-			if(logedInUser.getUserId() == customer.getCId()) {
+			if(logedInUser.getUserId() == customer.getcId()) {
 				return cDao.save(customer);
 			}
 			else {
@@ -66,8 +72,35 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 		}
 
-		
+		@Override
+		public Customer addAccount(BankAccount account, String key) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
-	
-//	--------------------------------------------------------------------------------------------
+		@Override
+		public Customer deleteAccount(Integer accountId, String key) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public BankAccount viewAccount(String accountNumber, String key) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public List<BankAccount> viewAllAccount(Integer customerId, String key) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public BigDecimal showBalance(String email) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+
 }

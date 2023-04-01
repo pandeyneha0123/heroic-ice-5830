@@ -9,11 +9,6 @@ import com.masai.model.Customer;
 
 public interface CustomerService {
 	
-//	----------------------------Neha--------------------------------------------->
-	
-
-	
-	
 
 	public Customer createCustomer(Customer customer) throws CustomerException;
 	
@@ -23,25 +18,17 @@ public interface CustomerService {
 	
 
 	public Customer viewCustomerDetails(Integer customerId, String key) throws CustomerException;
-//	------------------------------------------------------------------------------>
 
 
 
 	public Customer addAccount(BankAccount account, String key);
 
 
-
 	public Customer deleteAccount(Integer accountId, String key);
-
-
 
 	public BankAccount viewAccount(String accountNumber, String key);
 
-
-
 	public List<BankAccount> viewAllAccount(Integer customerId, String key);
-
-
 
 	public BigDecimal showBalance(String email);
 

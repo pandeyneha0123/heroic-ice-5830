@@ -2,6 +2,7 @@ package com.masai.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -23,6 +24,8 @@ public class Benificiary {
 	private Integer benificialId;
 	private String name;
 	private String mobileNumber;
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_Id")
 	private List<Address> address;

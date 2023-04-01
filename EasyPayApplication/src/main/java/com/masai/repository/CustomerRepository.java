@@ -7,8 +7,10 @@ import com.masai.model.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+	
+	public Customer findByEmail(String email);
 
-	public Customer findByMobile(String mobileNumber);
+//	public Customer findByMobile(String mobileNumber);
 }
 
 

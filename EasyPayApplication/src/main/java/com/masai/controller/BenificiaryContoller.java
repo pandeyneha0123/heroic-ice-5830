@@ -17,7 +17,7 @@ import com.masai.model.Benificiary;
 import com.masai.service.BenificiaryDao;
 
 @RestController
-public class BenificiaryController {
+public class BenificiaryContoller {
 	@Autowired
 	private BenificiaryDao dao;
 	
