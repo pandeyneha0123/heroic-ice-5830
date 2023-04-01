@@ -1,6 +1,8 @@
 package com.masai.model;
 
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -70,8 +72,8 @@ public class BankAccount {
 		Branch = branch;
 	}
 
-	public Double getBallence() {
-		return ballence;
+	public void getBallence(Double ballence) {
+		this.ballence = ballence;
 	}
 
 	public void setBallence(Double ballence) {

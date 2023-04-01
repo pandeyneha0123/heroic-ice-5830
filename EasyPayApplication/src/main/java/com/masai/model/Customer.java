@@ -18,9 +18,9 @@ import lombok.NoArgsConstructor;
 
 //1.customer(id Gv,Moble string,password String, emial email,Wallet wallet (foren ket),)
 
-//@Data
-//@AllArgsConstructor
-//@NoArgsConstructor
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Customer {
 	@Id
@@ -111,6 +111,11 @@ public class Customer {
 
 	public void setAccount(BankAccount account) {
 		this.account = account;
+	}
+
+	public void addAccount(BankAccount account2) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
