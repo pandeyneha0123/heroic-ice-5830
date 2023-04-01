@@ -16,11 +16,7 @@ public class EasyPayApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EasyPayApplication.class, args);
-<<<<<<< HEAD
 		System.out.println("Welcome to EasyPay, Enjoy our services ");
-		
-=======
->>>>>>> main
 	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)

@@ -2,35 +2,26 @@ package com.masai.model;
 
 import io.micrometer.common.lang.NonNull;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Login {
+	@NotEmpty
 	@NonNull
-	@Email(regexp = "Email shoud be well defiend ....")
+	@Email
 	private String email;
 	@NonNull
-	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\\\S+$).{8, 20}$",message = "password shoud be weel defiend...")
+	@NotEmpty
+	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])([a-zA-Z0-9@$!%*?&]{8,})$",message = "password shoud be weel defiend...")
 	private String password;
 	
-	
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	@Override
-	public String toString() {
-		return "Login [email=" + email + ", password=" + password + "]";
-	}
-	
+
 }
