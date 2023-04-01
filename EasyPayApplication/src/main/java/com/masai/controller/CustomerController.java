@@ -15,6 +15,8 @@ import com.masai.exception.CustomerException;
 import com.masai.model.Customer;
 import com.masai.service.CustomerService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class CustomerController {
 	
@@ -24,7 +26,7 @@ public class CustomerController {
 	
 	
 	@PostMapping("/customers")
-	public ResponseEntity<Customer> addNewCustomerHandler(@RequestBody Customer customer) throws CustomerException {
+	public ResponseEntity<Customer> addNewCustomerHandler(@Valid @RequestBody Customer customer) throws CustomerException {
 		
 		Customer savedCustomer = cService.createCustomer(customer);
 		
@@ -33,7 +35,7 @@ public class CustomerController {
 	}
 	
 	@PatchMapping("/customers/")
-	public ResponseEntity<Customer> updateCustomerHandler(@RequestBody Customer customer, @RequestParam String key) throws CustomerException {
+	public ResponseEntity<Customer> updateCustomerHandler(@Valid @RequestBody Customer customer, @RequestParam String key) throws CustomerException {
 		
 		Customer savedCustomer = cService.updateCustomer(customer, key);
 		

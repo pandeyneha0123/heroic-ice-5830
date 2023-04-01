@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.masai.model.Address;
 import com.masai.model.Benificiary;
+import com.masai.model.Wallet;
 import com.masai.service.BenificiaryDao;
 
 @RestController
@@ -22,8 +24,9 @@ public class BenificiaryContoller {
 	private BenificiaryDao dao;
 	
 	@PostMapping("/addBenificiary")
-	public ResponseEntity<Benificiary>  addBenificiary(@RequestBody Benificiary benificial,@RequestParam("key") String key) {
-		Benificiary addBenificiary = dao.addBenificiary(benificial,key);
+	public ResponseEntity<Benificiary>  addBenificiary(@RequestBody Benificiary benificial,@RequestParam("key") String key,
+			@RequestBody Wallet l) {
+		Benificiary addBenificiary = dao.addBenificiary(benificial,key,l);
 		return  new ResponseEntity<>(addBenificiary,HttpStatus.CREATED);
 	}
 	
