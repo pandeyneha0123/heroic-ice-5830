@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.model.BillPayment;
+import com.masai.model.Wallet;
 import com.masai.service.BillPaymentDao;
 
 @RestController
@@ -19,8 +20,8 @@ public class BillPaymentContoller {
 	private BillPaymentDao dao;
 	
 	@PostMapping("/addBillPayment")
-	public ResponseEntity<BillPayment> addBillPayment(@RequestBody BillPayment billpayment,@RequestParam("key") String key){
-		BillPayment addBillPayment = dao.addBillPayment(billpayment,key);
+	public ResponseEntity<BillPayment> addBillPayment(@RequestBody BillPayment billpayment,@RequestParam("key") String key,@RequestBody Wallet w){
+		BillPayment addBillPayment = dao.addBillPayment(billpayment,key,w);
 		return new ResponseEntity<>(addBillPayment,HttpStatus.CREATED);
 	}
 	@PostMapping("/ViewBillPayment/{id}")

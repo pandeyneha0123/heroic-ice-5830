@@ -14,6 +14,8 @@ import com.masai.exception.LoginException;
 import com.masai.model.Login;
 import com.masai.service.LoginService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/epay")
 public class LoginLogoutController {
@@ -22,7 +24,7 @@ public class LoginLogoutController {
 	private LoginService loginService;
 	
 	@PostMapping("/login")
-	public ResponseEntity<String> loginUserHandler(@RequestBody Login login) throws LoginException{
+	public ResponseEntity<String> loginUserHandler(@Valid @RequestBody Login login) throws LoginException{
 		
 		 String result = loginService.logInToAccount(login);
 		

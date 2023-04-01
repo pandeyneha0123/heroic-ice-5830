@@ -145,7 +145,6 @@ public class BankAccountServiceImpl implements BankAccountService {
 
 	}
 
-	@Override
 	public BigDecimal showBalance(String email, String key) throws CustomerException {
 
 //	    
@@ -160,6 +159,12 @@ public class BankAccountServiceImpl implements BankAccountService {
 //	    
 //	    // Return the balance
 //	    return balance;
+		return null;
+	}
+
+	@Override
+	public BigDecimal showBalance(String email) throws CustomerException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
