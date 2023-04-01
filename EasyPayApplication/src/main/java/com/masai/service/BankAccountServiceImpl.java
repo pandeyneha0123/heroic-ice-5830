@@ -14,7 +14,7 @@ import com.masai.model.Wallet;
 import com.masai.repository.AccountDao;
 import com.masai.repository.CustomerDao;
 import com.masai.repository.SessionRepository;
-import com.masai.repository.WalletDao;
+import com.masai.repository.WalletRepository;
 
 @Service
 public class BankAccountServiceImpl implements BankAccountService {
@@ -29,7 +29,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 	private AccountDao bDao;
 
 	@Autowired
-	private WalletDao wDao;
+	private WalletRepository wDao;
 	
 	@Autowired
 	SessionRepository session;

@@ -13,7 +13,7 @@ import com.masai.model.Transection;
 import com.masai.model.Wallet;
 import com.masai.repository.TransactionDao;
 //import com.masai.repository.TransactionDao;
-import com.masai.repository.WalletDao;
+import com.masai.repository.WalletRepository;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
@@ -21,7 +21,7 @@ public class TransactionServiceImpl implements TransactionService {
 	@Autowired
 	private TransactionDao tra; 
 	@Autowired
-	private WalletDao wd;
+	private WalletRepository wd;
 
 	@Override
 	public TransactionDto addTranaction(TransactionDto tran) throws TransactionException {
