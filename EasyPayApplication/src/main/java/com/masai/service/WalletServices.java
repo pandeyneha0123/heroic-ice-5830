@@ -6,12 +6,13 @@ import com.masai.exception.WalletException;
 import com.masai.model.Customer;
 import com.masai.model.Transection;
 import com.masai.model.Wallet;
+import com.masai.model.WalletDto;
 
 
 public interface WalletServices {
-	public Customer createNewWallet(String name, String mbileNumber, BigDecimal ammount, String key) throws WalletException;
-	public BigDecimal showBallence(String email, String key) throws WalletException;
-	public Transection fundTrnasfer(String sourceMobileNumber, String targetMobileNumber, BigDecimal ammount, String key) throws WalletException;
-	public Transection depositAmmount(String email, BigDecimal ammount, String key) throws WalletException;
+	public Customer createNewWallet(WalletDto walletDto, String key) throws WalletException;
+	public WalletDto showBallence(String phone, String key) throws WalletException;
+	public Transection fundTrnasfer(String sourceMobileNumber, String targetMobileNumber, Double ammount, String key) throws WalletException;
+	public Transection depositAmmount(String phone, Double ammount, String key) throws WalletException;
 	
 }

@@ -30,6 +30,9 @@ public class Customer {
 	private String password;
 	private String email;
 	private String phone;
+	private String role;
+	
+	
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)

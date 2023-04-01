@@ -30,6 +30,7 @@ public class Wallet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer walletId;
 	private String customerName;
+	private String phone;
     private Double amount;
     private LocalDate lastUpdate;
     

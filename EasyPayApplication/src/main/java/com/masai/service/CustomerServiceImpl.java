@@ -64,9 +64,15 @@ public class CustomerServiceImpl implements CustomerService {
 			Optional<CurrentUserSession> cSession = csDao.findById(customerId);
 			
 			if (cSession.isPresent()) {
+				
 				Optional<Customer> opt = cDao.findById(customerId);
-				Customer customer = opt.get();
-				return customer;
+			
+				if(opt.isPresent()) {
+					return opt.get();
+				}else {
+					throw new CustomerException("Something went wrong please try again later!");
+				}
+				
 			} else {
 				throw new CustomerException("User must be logged in !");
 			}
