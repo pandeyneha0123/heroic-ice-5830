@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +30,9 @@ public class Wallet {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer walletId;
+	private String customerName;
+	@Column(unique = true)
+	private String phone;
     private Double amount;
     private LocalDate lastUpdate;
     
@@ -49,5 +53,53 @@ public class Wallet {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "walletId")
     private List<Benificiary> benificiarylist;
+
+	public Integer getWalletId() {
+		return walletId;
+	}
+
+	public void setWalletId(Integer walletId) {
+		this.walletId = walletId;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+	public LocalDate getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public void setLastUpdate(LocalDate lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+
+	public List<BankAccount> getBanks() {
+		return banks;
+	}
+
+	public void setBanks(List<BankAccount> banks) {
+		this.banks = banks;
+	}
+
+	public List<BillPayment> getBills() {
+		return bills;
+	}
+
+	public void setBills(List<BillPayment> bills) {
+		this.bills = bills;
+	}
+
+	public List<Benificiary> getBenificiarylist() {
+		return benificiarylist;
+	}
+
+	public void setBenificiarylist(List<Benificiary> benificiarylist) {
+		this.benificiarylist = benificiarylist;
+	}
 
 }

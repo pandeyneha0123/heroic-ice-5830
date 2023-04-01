@@ -1,6 +1,7 @@
 package com.masai.service;
 
 import java.time.LocalDateTime;
+
 import java.util.Optional;
 import java.util.UUID;
 
@@ -26,8 +27,8 @@ public class LoginServiceImpl implements LoginService {
 	private String getRandomUUID() {
 
 	    UUID randomUUID = UUID.randomUUID();
-
-	    return randomUUID.toString().replaceAll("_", "");
+	    String string = randomUUID.toString().replaceAll("-", "").substring(0, 12);
+	    return string;
 
 	 }
 	
@@ -42,7 +43,7 @@ public class LoginServiceImpl implements LoginService {
 		}
 		
 		//check if customer already in session 
-		Optional<CurrentUserSession> currentUserSession = currentSessionResRepository.findById(existingCustomer.getCId());
+		Optional<CurrentUserSession> currentUserSession = currentSessionResRepository.findById(existingCustomer.getcId());
 		
 		if(currentUserSession.isPresent())
 			throw new LoginException("User already logged in with this userID");
@@ -52,9 +53,10 @@ public class LoginServiceImpl implements LoginService {
 			
 			CurrentUserSession cs = new CurrentUserSession();
 			
-			cs.setUserId(existingCustomer.getCId());
+			cs.setUserId(existingCustomer.getcId());
 			cs.setLocalDateTime(LocalDateTime.now());
 			cs.setUuid(getRandomUUID());
+			cs.setRole(existingCustomer.getRole());
 
 			CurrentUserSession cSession = currentSessionResRepository.save(cs);
 			

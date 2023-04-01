@@ -32,3 +32,5 @@ public class BillPaymentContoller {
 	
 	
 }
+//1. for getting json documentation: /v3/api-docs/
+//2. for getting ui documentation: /swagger-ui.html
