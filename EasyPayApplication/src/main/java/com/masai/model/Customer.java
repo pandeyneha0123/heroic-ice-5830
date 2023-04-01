@@ -18,9 +18,9 @@ import lombok.NoArgsConstructor;
 
 //1.customer(id Gv,Moble string,password String, emial email,Wallet wallet (foren ket),)
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Entity
 public class Customer {
 	@Id
@@ -45,5 +45,70 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "account_Id")
 	private BankAccount account;
+
+	public Integer getcId() {
+		return cId;
+	}
+
+	public void setcId(Integer cId) {
+		this.cId = cId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Wallet getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
+	}
+
+	public List<Address> getAddress() {
+		return address;
+	}
+
+	public void setAddress(List<Address> address) {
+		this.address = address;
+	}
+
+	public BankAccount getAccount() {
+		return account;
+	}
+
+	public void setAccount(BankAccount account) {
+		this.account = account;
+	}
+	
 
 }

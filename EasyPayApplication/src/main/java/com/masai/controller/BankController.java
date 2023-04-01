@@ -20,11 +20,9 @@ public class BankController {
 	@Autowired
     private CustomerService customerService;
 
-    public BankController(CustomerService customerService) {
-        this.customerService = customerService;
-    }
+    
 
-    @PostMapping("/customers/{customerId}/accounts")
+    @PostMapping("/customers/{customerId}")
     public Customer addAccount(@RequestBody BankAccount account, @PathVariable("customerId") String customerId, @RequestParam("key") String key) throws CustomerException {
         return customerService.addAccount(account, key);
     }

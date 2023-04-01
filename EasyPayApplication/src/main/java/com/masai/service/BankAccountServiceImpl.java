@@ -146,21 +146,23 @@ public class BankAccountServiceImpl implements BankAccountService {
 	}
 
 	@Override
-	public BigDecimal showBalance(String email) throws CustomerException {
+	public BigDecimal showBalance(String email, String key) throws CustomerException {
 
-	    
-		// Retrieve the balance of the customer with the given email from the database
-	    BigDecimal balance = session.getBalanceByEmail(email);
-	    
-	 // If the balance is null or negative, throw an exception
-	    if (balance == null || balance.compareTo(BigDecimal.ZERO) < 0) {
-	        throw new CustomerException("Invalid balance");
-	    }
-	    
-	    // Return the balance
-	    return balance;
+//	    
+//		// Retrieve the balance of the customer
+//		
+//	    BigDecimal balance = session.getBalanceByEmail(email);
+//	    
+//	 // If the balance is null or negative, throw an exception
+//	    if (balance == null || balance.compareTo(BigDecimal.ZERO) < 0) {
+//	        throw new CustomerException("Invalid balance");
+//	    }
+//	    
+//	    // Return the balance
+//	    return balance;
+		return null;
 	}
 
-	}
+	
 
 }

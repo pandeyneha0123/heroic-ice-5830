@@ -42,7 +42,7 @@ public class LoginServiceImpl implements LoginService {
 		}
 		
 		//check if customer already in session 
-		Optional<CurrentUserSession> currentUserSession = currentSessionResRepository.findById(existingCustomer.getCId());
+		Optional<CurrentUserSession> currentUserSession = currentSessionResRepository.findById(existingCustomer.getcId());
 		
 		if(currentUserSession.isPresent())
 			throw new LoginException("User already logged in with this userID");
@@ -52,7 +52,7 @@ public class LoginServiceImpl implements LoginService {
 			
 			CurrentUserSession cs = new CurrentUserSession();
 			
-			cs.setUserId(existingCustomer.getCId());
+			cs.setUserId(existingCustomer.getcId());
 			cs.setLocalDateTime(LocalDateTime.now());
 			cs.setUuid(getRandomUUID());
 

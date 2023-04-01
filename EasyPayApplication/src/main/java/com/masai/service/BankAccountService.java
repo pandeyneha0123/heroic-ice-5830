@@ -18,6 +18,6 @@ public interface BankAccountService {
 
 	public List<BankAccount> ViewAllAccount(Integer wId, String key) throws CustomerException;
 
-	public BigDecimal showBalance(String email) throws CustomerException;
+	public BigDecimal showBalance(String email, String key) throws CustomerException;
 
 }
