@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.exception.WalletException;
 import com.masai.model.Customer;
+import com.masai.model.PhoneToPhoneTransectionDto;
+import com.masai.model.Transection;
 import com.masai.model.WalletDto;
 import com.masai.service.WalletServices;
 
@@ -36,5 +38,13 @@ public class WalletController {
 		WalletDto respnoseWalletDto = walletServices.showBallence(phone, key);
 		
 		return new ResponseEntity<WalletDto>(respnoseWalletDto,HttpStatus.OK);
+	}
+	
+	@PostMapping("/wallets/{id}")
+	public ResponseEntity<Transection> fundTransferHandler(@RequestBody PhoneToPhoneTransectionDto p2pDto, @RequestParam String key) throws WalletException {
+		
+		Transection resposeTransection =	walletServices.fundTrnasfer(p2pDto, key);
+		
+		return new ResponseEntity<>(resposeTransection, HttpStatus.CREATED);
 	}
 }

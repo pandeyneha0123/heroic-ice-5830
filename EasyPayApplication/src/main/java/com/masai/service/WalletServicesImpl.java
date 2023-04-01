@@ -2,13 +2,15 @@ package com.masai.service;
 
 import java.time.LocalDate;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.masai.exception.TransactionException;
 import com.masai.exception.WalletException;
 import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
+import com.masai.model.PhoneToPhoneTransectionDto;
+import com.masai.model.TransactionDto;
 import com.masai.model.Transection;
 import com.masai.model.Wallet;
 import com.masai.model.WalletDto;
@@ -27,6 +29,9 @@ public class WalletServicesImpl implements WalletServices {
 	
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private TransactionService transectionService;
 	
 	@Override
 	public Customer createNewWallet(WalletDto walletDto, String key)
@@ -111,14 +116,61 @@ public class WalletServicesImpl implements WalletServices {
 	}
 
 	@Override
-	public Transection fundTrnasfer(String sourceMobileNumber, String targetMobileNumber, Double ammount,
-			String key) throws WalletException {
+	public Transection fundTrnasfer(PhoneToPhoneTransectionDto transferForm, String key) throws WalletException {
 		
-		return null;
+		//verify user is loged in or not
+		CurrentUserSession userLogedIn = sessionRepository.findByUuid(key);
+		
+		if(userLogedIn == null) {
+			throw new WalletException("User must login first !");
+		}
+		
+		// getting the cutomer details
+		Optional<Customer> sorceCustomer = customerRepository.findById(userLogedIn.getUserId());
+		
+		Optional<Wallet> souceUser = walletRepository.findByPhone(transferForm.getTargetMobileNumber());
+		
+		Optional<Wallet> targetUser = walletRepository.findByPhone(transferForm.getTargetMobileNumber());
+		
+		if(souceUser.isEmpty()) {
+			throw new WalletException("No user found with this number : "+ transferForm.getSourcePhone());
+		}
+		if(targetUser.isEmpty()) {
+			throw new WalletException("No user found with this number : "+ transferForm.getTargetMobileNumber());
+		}
+		
+		Wallet sourceWallet = souceUser.get();
+		Wallet targetWallet = targetUser.get();
+		
+		if(sourceWallet.getAmount() < transferForm.getAmmount()) {
+			throw new WalletException("Insufficent balance...!");
+		}
+		
+		//transection------>
+		sourceWallet.setAmount(sourceWallet.getAmount() - transferForm.getAmmount());
+		
+		targetWallet.setAmount(targetWallet.getAmount() + transferForm.getAmmount());
+		// update ballence;
+		walletRepository.save(sourceWallet);
+		walletRepository.save(targetWallet);
+		
+		//transection succesfull----->
+		
+		//transection recipet
+		Transection t1 = null;
+		Transection t2 = null;
+		try {
+			t1 = transectionService.transectionByPhone(new TransactionDto(0, "Fund Transfer", "Debit", sourceWallet.getWalletId()));
+			transectionService.transectionByPhone(new TransactionDto(0, "Fund Transfer", "Credit", targetWallet.getWalletId()));
+		} catch (TransactionException e) {
+			
+		}
+		
+		return t1;
 	}
 
 	@Override
-	public Transection depositAmmount(String email, Double ammount, String key) throws WalletException {
+	public Transection depositAmmount(String phone, Double ammount, String key) throws WalletException {
 		
 		return null;
 	}
