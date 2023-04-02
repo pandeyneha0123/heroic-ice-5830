@@ -2,8 +2,8 @@
 
 # Payment-Wallet-Application
 
-<img src="https://drive.google.com/file/d/121YofOwGPLZHnTk5fXZjIRXh3ZUENkJV/view?usp=share_link" width='200' height="200"/>
-
+<!-- <img src="https://drive.google.com/file/d/121YofOwGPLZHnTk5fXZjIRXh3ZUENkJV/view?usp=share_link" width='200' height="200"/>
+ -->
 Pay Easy is an online payment wallet application system.Its a Spring-Boot application project to develop REST API for the Online Payement Wallet app.This project is developed to allow customers to make payments using wallets while making any purchase.
       
 #Funcionality of the application:
