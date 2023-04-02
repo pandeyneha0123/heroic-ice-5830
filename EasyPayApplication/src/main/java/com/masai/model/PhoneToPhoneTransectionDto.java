@@ -14,4 +14,5 @@ public class PhoneToPhoneTransectionDto {
 	private String sourcePhone;
 	private String targetMobileNumber; 
 	private Double ammount;
+	private String description;
 }

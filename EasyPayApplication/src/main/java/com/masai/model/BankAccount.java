@@ -18,6 +18,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 
@@ -26,6 +27,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class BankAccount {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,10 +50,15 @@ public class BankAccount {
 	@NonNull
 	@NotEmpty
     private String bankName;
-    
-    @JsonIgnore
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer_Id")
-    private Customer customer;
+	
+	@JsonIgnore
+	@OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "walletId")
+	private Wallet wallet;
+	
+//    @JsonIgnore
+//    @OneToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "customer_Id")
+//    private Customer customer;
 
 }

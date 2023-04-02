@@ -19,7 +19,7 @@ import com.masai.model.Transection;
 import com.masai.service.TransactionService;
 
 @RestController
-@RequestMapping("/gpay/users")
+@RequestMapping("/ePay/users")
 public class TransectionController {
 	
 	@Autowired
