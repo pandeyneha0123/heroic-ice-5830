@@ -55,8 +55,8 @@ http://localhost:8888/swagger-ui/
 
 # Collaborators
 
-- Neha Pandey(fw20_0039)
-- Amit Chakraborty
-- Prince kumar
-- Rohit Kumar
+- Neha Pandey (fw20_0039)
+- Amit Chakraborty (fw22_0458)
+- Prince kumar (fp03_)
+- Rohit Kumar (fw19_0)
 
