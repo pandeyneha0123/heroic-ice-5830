@@ -6,11 +6,11 @@
  -->
 Pay Easy is an online payment wallet application system.Its a Spring-Boot application project to develop REST API for the Online Payement Wallet app.This project is developed to allow customers to make payments using wallets while making any purchase.
       
-#Funcionality of the application:
-.Customer can able to transfer money from bank to wallet,
-.Customer can able to add BankAcconuts to their wallet,
-.Customer can see his all transactions by type,
-.Customer can also add Beneficiary to their account,
+# Funcionality of the application:
+- Customer can able to transfer money from bank to wallet,
+- Customer can able to add BankAcconuts to their wallet,
+- Customer can see his all transactions by type,
+- Customer can also add Beneficiary to their account,
 
 # Tech Stack
 - Java
