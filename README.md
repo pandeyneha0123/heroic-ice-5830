@@ -1,6 +1,6 @@
 # heroic-ice-5830
 
-# Payment-Wallet-Application
+# Payment-Wallet-Services
 
 
  <p align="center">
