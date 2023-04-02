@@ -42,25 +42,25 @@ public class BankController {
 
     
 
-//    @GetMapping("/{customerId}/accounts")
-//    public ResponseEntity<List<BankAccount>> viewAllAccounts(@RequestBody BankAccount account,@PathVariable Integer customerId,
-//                                                              @RequestParam String key) {
-//        try {
-//            List<BankAccount> accounts = customerService.viewAllAccount(customerId, key);
-//            return ResponseEntity.ok(accounts);
-//        } catch (CustomerNotFoundException e) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-//        }
-//    }
-//
-//    @GetMapping("/{email}/balance")
-//    public ResponseEntity<Double> showBalance(@RequestBody BankAccount account,@PathVariable String email,
-//                                               @RequestParam String key) {
-//        try {
-//            Double balance = customerService.showBalance(email, key);
-//            return ResponseEntity.ok(balance);
-//        } catch (CustomerException e) {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-//        }
-//    }
+    @GetMapping("/{customerId}/accounts")
+    public ResponseEntity<List<BankAccount>> viewAllAccounts(@RequestBody BankAccount account,@PathVariable Integer customerId,
+                                                              @RequestParam String key) {
+        try {
+            List<BankAccount> accounts = customerService.viewAllAccount(customerId, key);
+            return ResponseEntity.ok(accounts);
+        } catch (CustomerNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+    @GetMapping("/{email}/balance")
+    public ResponseEntity<Double> showBalance(@RequestBody BankAccount account,@PathVariable String email,
+                                               @RequestParam String key) {
+        try {
+            Double balance = customerService.showBalance(email, key);
+            return ResponseEntity.ok(balance);
+        } catch (CustomerException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
 }
