@@ -2,7 +2,10 @@
 
 # Payment-Wallet-Application
 
- <img src="https://drive.google.com/file/d/121YofOwGPLZHnTk5fXZjIRXh3ZUENkJV/view?usp=share_link"/>
+
+ <p align="center">
+  <img src="https://github.com/pandeyneha0123/heroic-ice-5830/blob/main/easyPay%20logo.png.png" width="600" height="400" essibility text">
+</p>
  
 Pay Easy is an online payment wallet application system.Its a Spring-Boot application project to develop REST API for the Online Payement Wallet app.This project is developed to allow customers to make payments using wallets while making any purchase.
       
@@ -56,6 +59,10 @@ http://localhost:8888/swagger-ui/
 ```
 # ER Diagram
 
+
+ <p align="center">
+  <img src="https://github.com/pandeyneha0123/heroic-ice-5830/blob/main/secondErDigramEasypay.pdf" width="600" height="400" essibility text">
+</p>
 
 # Collaborators
 
