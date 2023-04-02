@@ -47,7 +47,7 @@
 
 # API Root Endpoint
 ```
-https://localhost:8888/
+https://localhost:8080/
 ```
 ```
 http://localhost:8888/swagger-ui/
