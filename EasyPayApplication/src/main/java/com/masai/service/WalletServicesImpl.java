@@ -128,7 +128,7 @@ public class WalletServicesImpl implements WalletServices {
 		// getting the cutomer details
 		Optional<Customer> sorceCustomer = customerRepository.findById(userLogedIn.getUserId());
 		
-		Optional<Wallet> souceUser = walletRepository.findByPhone(transferForm.getTargetMobileNumber());
+		Optional<Wallet> souceUser = walletRepository.findByPhone(transferForm.getSourcePhone());
 		
 		Optional<Wallet> targetUser = walletRepository.findByPhone(transferForm.getTargetMobileNumber());
 		
@@ -146,11 +146,11 @@ public class WalletServicesImpl implements WalletServices {
 			throw new WalletException("Insufficent balance...!");
 		}
 		
-		//transection------>
+		//transection------------>
 		sourceWallet.setAmount(sourceWallet.getAmount() - transferForm.getAmmount());
 		
 		targetWallet.setAmount(targetWallet.getAmount() + transferForm.getAmmount());
-		// update ballence;
+		//update ballence-------->
 		walletRepository.save(sourceWallet);
 		walletRepository.save(targetWallet);
 		

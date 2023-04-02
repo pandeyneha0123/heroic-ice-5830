@@ -48,7 +48,7 @@ public class CustomerServiceImpl implements CustomerService {
 				throw new CustomerException("Please provide valid key to update the customer");
 			}
 			
-			if(logedInUser.getUserId() == customer.getcId()) {
+			if(logedInUser.getUserId() == customer.getCId()) {
 				return cDao.save(customer);
 			}
 			else {
@@ -95,7 +95,7 @@ public class CustomerServiceImpl implements CustomerService {
 		        }
 		        
 		        // Add new account to customer's account list
-		        customer.addAccount(account);
+		        customer.setAccount(account);
 		        
 		        // Save updated customer object to repository
 		        customer = cDao.save(customer);
