@@ -39,7 +39,7 @@
 ```
     server.port=8088
 
-    spring.datasource.url=jdbc:mysql://localhost:3306/paymentguru;
+    spring.datasource.url=jdbc:mysql://localhost:3306/easyapp;
     spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
     spring.datasource.username=root
     spring.datasource.password=root
