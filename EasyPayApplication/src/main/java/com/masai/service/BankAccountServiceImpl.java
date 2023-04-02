@@ -12,6 +12,7 @@ import com.masai.model.CurrentUserSession;
 import com.masai.model.Customer;
 import com.masai.model.Wallet;
 import com.masai.repository.AccountDao;
+import com.masai.repository.BankRepository;
 import com.masai.repository.CustomerDao;
 import com.masai.repository.SessionRepository;
 import com.masai.repository.WalletRepository;
@@ -30,6 +31,9 @@ public class BankAccountServiceImpl implements BankAccountService {
 
 	@Autowired
 	private WalletRepository wDao;
+	
+	@Autowired
+	BankRepository bankRepository;
 	
 	@Autowired
 	SessionRepository session;
@@ -58,7 +62,8 @@ public class BankAccountServiceImpl implements BankAccountService {
 			// return desired bank account
 			if (!flag) {
 				// add bank account
-				customer.getWallet().getBanks().add(Account);
+				BankAccount account = bankRepository.save(Account);
+				customer.getWallet().getBanks().add(account);
 				cDao.save(customer);
 				return customer;
 			} else {
@@ -96,7 +101,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 	}
 
 	@Override
-	public BankAccount ViewAccount(String accountNo, String key) throws CustomerException{
+	public BankAccount viewAccount(String accountNo, String key) throws CustomerException{
 		
 		CurrentUserSession responseSession = session.findByUuid(key);
 		BankAccount bankAccount = null;
