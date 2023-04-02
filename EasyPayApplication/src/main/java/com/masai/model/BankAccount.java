@@ -21,9 +21,9 @@ import lombok.NoArgsConstructor;
 //Wallet wallet,Customerid int)
 
 @Entity
-//@Data
-//@AllArgsConstructor
-//@NoArgsConstructor
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class BankAccount {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

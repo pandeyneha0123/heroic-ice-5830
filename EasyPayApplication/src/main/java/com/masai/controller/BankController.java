@@ -35,24 +35,32 @@ public class BankController {
     }
 
     @DeleteMapping("/customers/{customerId}/accounts/{accountId}")
-    public Customer deleteAccount(@PathVariable("accountId") Integer accountId, @PathVariable("customerId") String customerId, @RequestParam("key") String key) throws CustomerException {
-        return customerService.deleteAccount(accountId, key);
+    public ResponseEntity<Customer> deleteAccount(@RequestBody BankAccount account,@PathVariable("accountId") Integer accountId, @PathVariable("customerId") String customerId, @RequestParam("key") String key) throws CustomerException {
+    	Customer deleteAccount=customerService.deleteAccount(accountId, key);
+    	return new ResponseEntity<>(deleteAccount,HttpStatus.CREATED);
     }
 
-    @GetMapping("/accounts/{accountNumber}")
-    public BankAccount viewAccount(@PathVariable("accountNumber") String accountNumber, @RequestParam("key") String key) throws CustomerException, AccountNotFoundException {
-        return customerService.viewAccount(accountNumber, key);
-    }
+    
 
-    @GetMapping("/customers/{customerId}/accounts")
-    public List<BankAccount> viewAllAccount(@PathVariable("customerId") Integer customerId, @RequestParam("key") String key) throws CustomerException, CustomerNotFoundException {
-        return customerService.viewAllAccount(customerId, key);
-    }
-
-    @GetMapping("/customers/{email}/balance")
-    public Double showBalance(@PathVariable("email") String email,@RequestParam("key") String key) throws CustomerException {
-        return customerService.showBalance(email,key);
-    }
-
-   
+//    @GetMapping("/{customerId}/accounts")
+//    public ResponseEntity<List<BankAccount>> viewAllAccounts(@RequestBody BankAccount account,@PathVariable Integer customerId,
+//                                                              @RequestParam String key) {
+//        try {
+//            List<BankAccount> accounts = customerService.viewAllAccount(customerId, key);
+//            return ResponseEntity.ok(accounts);
+//        } catch (CustomerNotFoundException e) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+//        }
+//    }
+//
+//    @GetMapping("/{email}/balance")
+//    public ResponseEntity<Double> showBalance(@RequestBody BankAccount account,@PathVariable String email,
+//                                               @RequestParam String key) {
+//        try {
+//            Double balance = customerService.showBalance(email, key);
+//            return ResponseEntity.ok(balance);
+//        } catch (CustomerException e) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+//        }
+//    }
 }
