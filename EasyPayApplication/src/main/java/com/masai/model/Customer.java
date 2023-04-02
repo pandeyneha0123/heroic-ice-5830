@@ -33,13 +33,11 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cId;
-<<<<<<< HEAD
+
 	@NonNull
 	@NotEmpty
 	@Length(min = 3,max = 15,message = "name length shoud be min 3 char and max of 15 char")
-=======
-	                                                                                                                                                                                                                                                                                                                                                                                                                       
->>>>>>> main
+
 	private String name;
 	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\\\S+$).{8, 20}$",message = "password shoud be weel defiend...")
 	private String password;

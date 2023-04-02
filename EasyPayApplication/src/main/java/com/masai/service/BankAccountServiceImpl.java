@@ -162,11 +162,7 @@ public class BankAccountServiceImpl implements BankAccountService {
 		return null;
 	}
 
-	@Override
-	public BigDecimal showBalance(String email) throws CustomerException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	
 

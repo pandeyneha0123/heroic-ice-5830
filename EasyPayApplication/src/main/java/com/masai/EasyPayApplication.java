@@ -16,16 +16,15 @@ public class EasyPayApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EasyPayApplication.class, args);
-<<<<<<< HEAD
+
 		System.out.println("Welcome to EasyPay, Enjoy our services ");
 		
-=======
->>>>>>> main
+
 	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<MyErrorDetails> myMANVExceptionHandler(MethodArgumentNotValidException me) {
-		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(), "Validation Error",
+		MyErrorDetails err = new MyErrorDetails(LocalDateTime.now(),"validtor Error:- "+ me.getMessage(),
 				me.getBindingResult().getFieldError().getDefaultMessage());
 		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
 	}
