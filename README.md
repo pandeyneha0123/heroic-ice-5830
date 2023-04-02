@@ -33,8 +33,8 @@
 
 
 # Installation & Run
- - Before running the API server, you should update the database config inside the application.properties file.
-- Update the port number, username and password as per your local database configuration.
+ - if you want to run the API server, you should have to update the database configuration inside the application.properties file and Update the port number, username and password as per your local database configuration.
+
 
 ```
     server.port=8088
@@ -55,7 +55,7 @@ http://localhost:8888/swagger-ui/
 
 # Collaborators
 
-- Neha Pandey
+- Neha Pandey(fw20_0039)
 - Amit Chakraborty
 - Prince kumar
 - Rohit Kumar
