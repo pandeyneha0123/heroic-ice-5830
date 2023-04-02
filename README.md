@@ -54,6 +54,8 @@ https://localhost:8080/
 ```
 http://localhost:8888/swagger-ui/
 ```
+# ER Diagram
+
 
 # Collaborators
 
