@@ -1,6 +1,5 @@
 package com.masai.service;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import com.masai.exception.CustomerException;
@@ -18,6 +17,6 @@ public interface BankAccountService {
 
 	public List<BankAccount> ViewAllAccount(Integer wId, String key) throws CustomerException;
 
-	public BigDecimal showBalance(String email, String key) throws CustomerException;
+	public Double showBalance(String email, String key) throws CustomerException;
 
 }

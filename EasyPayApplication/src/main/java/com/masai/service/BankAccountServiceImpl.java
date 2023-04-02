@@ -1,6 +1,5 @@
 package com.masai.service;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 
 import java.util.List;
@@ -143,6 +142,12 @@ public class BankAccountServiceImpl implements BankAccountService {
 			throw new CustomerException("Customer not logged in");
 		}
 
+	}
+
+	@Override
+	public Double showBalance(String email, String key) throws CustomerException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
