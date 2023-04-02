@@ -33,7 +33,11 @@ public interface CustomerService {
 
 	public List<BankAccount> viewAllAccount(Integer customerId, String key)throws CustomerNotFoundException;;
 
-	public Double showBalance(String email,String Key)throws CustomerException;;
+	public Double showBalance(String email,String Key)throws CustomerException;
+
+
+
+	
 
 
 
