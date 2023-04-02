@@ -2,13 +2,18 @@
 
 # Payment-Wallet-Application
 
-<img
-  align="right"
-        width="25%"
-        href="https://drive.google.com/file/d/1LMAIW6dYHcldF4_mV5gmGAoS4IKjUrUK/view?usp=share_link"
-        alt=""
-      />
-      Pay Easy is an online payment wallet application system.
+
+ <p align="center">
+  <img src="https://github.com/pandeyneha0123/heroic-ice-5830/blob/main/easyPay%20logo.png.png" width="600" height="400" essibility text">
+</p>
+ 
+Pay Easy is an online payment wallet application system.Its a Spring-Boot application project to develop REST API for the Online Payement Wallet app.This project is developed to allow customers to make payments using wallets while making any purchase.
+      
+# Funcionality of the application:
+- Customer can able to transfer money from bank to wallet,
+- Customer can able to add BankAcconuts to their wallet,
+- Customer can see his all transactions by type,
+- Customer can also add Beneficiary to their account,
 
 # Tech Stack
 - Java
@@ -32,10 +37,37 @@
 - Wallet service
 
 
+# Installation & Run
+ - if you want to run the API server, you should have to update the database configuration inside the application.properties file and Update the port number, username and password as per your local database configuration.
+
+
+```
+    server.port=8088
+
+    spring.datasource.url=jdbc:mysql://localhost:3306/easyapp;
+    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+    spring.datasource.username=root
+    spring.datasource.password=root
+```
+
+# API Root Endpoint
+```
+https://localhost:8080/
+```
+```
+http://localhost:8888/swagger-ui/
+```
+# ER Diagram
+
+
+ <p align="center">
+  <img src="https://github.com/pandeyneha0123/heroic-ice-5830/blob/main/Screenshot%202023-04-02%20185621.png" width="600" height="400" essibility text">
+</p>
+
 # Collaborators
 
-- Neha Pandey
-- Amit Chakraborty
-- Prince kumar
-- Rohit Kumar
+- Neha Pandey (fw20_0039)
+- Amit Chakraborty (fw22_0458)
+- Prince kumar (fp03_275)
+- Rohit Kumar (fw19_0011)
 

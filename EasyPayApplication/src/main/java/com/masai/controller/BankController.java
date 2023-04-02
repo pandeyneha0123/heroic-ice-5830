@@ -52,7 +52,6 @@ public class BankController {
     @GetMapping("/customers/{email}/balance")
     public Double showBalance(@PathVariable("email") String email,@RequestParam("key") String key) throws CustomerException {
         return bankService.showBalance(email,key);
+    
     }
-
-   
 }
