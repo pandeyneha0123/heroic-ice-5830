@@ -67,7 +67,7 @@ http://localhost:8888/swagger-ui/
 # Login-logout
 
 <p align="center">
-  <img src="https://github.com/pandeyneha0123/heroic-ice-5830/blob/main/Screenshot_20230403_112319.png" width="1200" height="400" essibility text">
+  <img src="https://github.com/pandeyneha0123/heroic-ice-5830/blob/main/Screenshot_20230403_112319.png" width="1200" height="200" essibility text">
 </p>
                                                                                                                                                   
 # Wallet Controller
