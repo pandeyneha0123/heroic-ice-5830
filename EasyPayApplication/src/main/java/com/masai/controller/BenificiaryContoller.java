@@ -24,9 +24,9 @@ public class BenificiaryContoller {
 	private BenificiaryDao dao;
 	
 	@PostMapping("/addBenificiary")
-	public ResponseEntity<Benificiary>  addBenificiary(@RequestBody Benificiary benificial,@RequestParam("key") String key,
-			@RequestBody Wallet l) {
-		Benificiary addBenificiary = dao.addBenificiary(benificial,key,l);
+	public ResponseEntity<Benificiary>  addBenificiary(@RequestBody Benificiary benificial,@RequestParam("key") String key
+		) {
+		Benificiary addBenificiary = dao.addBenificiary(benificial,key);
 		return  new ResponseEntity<>(addBenificiary,HttpStatus.CREATED);
 	}
 	

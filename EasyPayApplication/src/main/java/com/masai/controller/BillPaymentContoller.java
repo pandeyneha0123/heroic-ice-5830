@@ -1,5 +1,7 @@
 package com.masai.controller;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +22,10 @@ public class BillPaymentContoller {
 	private BillPaymentDao dao;
 	
 	@PostMapping("/addBillPayment")
-	public ResponseEntity<BillPayment> addBillPayment(@RequestBody BillPayment billpayment,@RequestParam("key") String key,@RequestBody Wallet w){
-		BillPayment addBillPayment = dao.addBillPayment(billpayment,key,w);
+	public ResponseEntity<BillPayment> addBillPayment(@RequestBody BillPayment billpayment,@RequestParam() String key){
+		
+//		billpayment.setKey(key1);
+		BillPayment addBillPayment = dao.addBillPayment(billpayment,key);
 		return new ResponseEntity<>(addBillPayment,HttpStatus.CREATED);
 	}
 	@PostMapping("/ViewBillPayment/{id}")

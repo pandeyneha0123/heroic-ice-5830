@@ -15,7 +15,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,16 +33,14 @@ public class BillPayment {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer billPayId;
-	@NonNull
+	@NotNull
 	@NotEmpty
     private String billType;
-	@NonNull
-	@NotEmpty
+	@DecimalMin(value = "1",message = "amount must be greater than 1 ")
     private Double amount;
-	@NonNull
-	@NotEmpty
+	@NotNull
     private LocalDate paymentDate;
-
+	
     @JsonIgnore
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "wallet_Id")

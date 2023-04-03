@@ -84,7 +84,7 @@ public class BenificiaryDaoImplements implements BenificiaryDao {
 	}
 
 	@Override
-	public Benificiary addBenificiary(Benificiary benificiary,String key,Wallet w) throws BenificiaryException {
+	public Benificiary addBenificiary(Benificiary benificiary,String key) throws BenificiaryException {
 		CurrentUserSession useHereOrNot = repo2.findByUuid(key);
 		if(useHereOrNot==null) {
 			throw new LoginException("please Enter a valid key");
@@ -94,26 +94,23 @@ public class BenificiaryDaoImplements implements BenificiaryDao {
 			Customer currestuser = repo3.findById(userId).get();
 			Wallet wallet = currestuser.getWallet();
 			if(wallet==null) {
-				Wallet w1=new Wallet();
-				w1.setAmount(w.getAmount());
-				w1.setLastUpdate(w.getLastUpdate());
-				repo4.save(w1);
-				currestuser.setWallet(w1);
-				repo3.save(currestuser);
+//				Wallet w1=new Wallet();
+//				w1.setAmount(w.getAmount());
+//				w1.setLastUpdate(w.getLastUpdate());
+//				repo4.save(w1);
+//				currestuser.setWallet(w1);
+//				repo3.save(currestuser);
+				throw new BenificiaryException(" wallet is not their");
 			}
 			else {
-				wallet.getBenificiarylist().add(benificiary);
-				repo4.save(wallet);
+				Benificiary benifeciry = repo.save(benificiary);
+				wallet.getBenificiarylist().add(benifeciry);
+				Wallet save = repo4.save(wallet);
+				List<Benificiary> benificiarylist = save.getBenificiarylist();
+				return benifeciry;
 			}
 			
-		}
-		Optional<Benificiary> checkISorNot = repo.findById(benificiary.getBenificialId());
-		if(!checkISorNot.isEmpty()) {
-			throw new BenificiaryException("Benificiary is already their ...");
-		}
-		else {
-			Benificiary saveBenificiary = repo.save(benificiary);
-			return saveBenificiary;
+			
 		}
 	}
 
