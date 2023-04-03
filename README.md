@@ -73,13 +73,13 @@ http://localhost:8888/swagger-ui/
 # Wallet Controller
 
 <p align="center">
-  <img src="" width="1200" height="300" essibility text">
+  <img src="https://github.com/pandeyneha0123/heroic-ice-5830/blob/main/Screenshot_20230403_113917.png" width="1200" height="300" essibility text">
 </p>
 
 # trscaction Controller
 
 <p align="center">
-  <img src="" width="1200" height="300" essibility text">
+  <img src="https://github.com/pandeyneha0123/heroic-ice-5830/blob/main/Screenshot_20230403_113805.png" width="1200" height="300" essibility text">
 </p>
 
 
