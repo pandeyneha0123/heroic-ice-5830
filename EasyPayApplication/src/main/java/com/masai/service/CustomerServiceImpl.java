@@ -91,16 +91,15 @@ public class CustomerServiceImpl implements CustomerService {
 		        // Authenticate customer using provided  key
 		        Customer customer = cDao.findById(logedInUser.getUserId()).get();
 		        if (customer == null) {
-		            throw new CustomerException("Invalid key");
+		            throw new CustomerException("Invalid key....");
 		        }
 		        
-		        // Add new account to customer's account list
-		        customer.setAccount(account);
+		        // Add new account to customer's bank-account list
+		        customer.getWallet().getBanks().add(account);
 		        
 		        // Save updated customer object to repository
 		        customer = cDao.save(customer);
 
-		        
 		        return customer;
 		    }
 
@@ -115,20 +114,30 @@ public class CustomerServiceImpl implements CustomerService {
 		        // Authenticate customer using provided  key
 		        Customer customer = cDao.findById(logedInUser.getUserId()).get();
 		        if (customer == null) {
-		            throw new CustomerException("Invalid security key");
+		            throw new CustomerException("Invalid security key....");
 		        }
 		        
-		        // Find account with provided account ID
-		   
-		        BankAccount account = customer.getAccount();
-		        if (account == null) {
-		            throw new CustomerException("Account not found for customer");
-		        }
-		        customer.setAccount(null);
-		        cDao.save(customer);
+		        // Find accounts with provided account ID
+		        List<BankAccount> bankAccounts = customer.getWallet().getBanks();
 		        
+		        if(bankAccounts == null ||  bankAccounts.isEmpty()) {
+		            throw new CustomerException("Account not found for customer....");
+		        }
+		        
+		        BankAccount deletableAccount = null;
+		        for(BankAccount acc: bankAccounts) {
+		        	if(acc.getBankAccountId() == accountId) {
+		        		deletableAccount = acc;
+		        	}
+		        }
 		        // Throw exception if account not found
-		        return customer;
+		        if(deletableAccount == null) {
+		        	throw new CustomerException("Account not found for customer....");
+		        }
+		        
+		        customer.getWallet().getBanks().remove(deletableAccount);
+		        
+		        return  cDao.save(customer);
 		    }
 		
 
@@ -146,13 +155,23 @@ public class CustomerServiceImpl implements CustomerService {
 		            throw new AccountNotFoundException("Invalid security key");
 		        }
 		        
-		        // Find account with provided account number
-		        BankAccount account2 = customer.getAccount();
-		        // Throw exception if account not found
-		        if(account2==null)
-		        	throw new AccountNotFoundException("Account not found for customer");
+		        // Find accounts with provided account ID
+		        List<BankAccount> bankAccounts = customer.getWallet().getBanks();
 		        
-		       return  account2;
+		        if(bankAccounts == null ||  bankAccounts.isEmpty()) {
+		            throw new AccountNotFoundException("Account not found for customer....");
+		        }
+		        
+		        BankAccount bankAccount = null;
+		        for(BankAccount acc: bankAccounts) {
+		        	if(acc.getAccountNumber().equals(accountNumber)) {
+		        		bankAccount = acc;
+		        	}
+		        }
+		        if(bankAccount == null) {
+		            throw new AccountNotFoundException("Account not found for customer....");
+		        }
+		       return  bankAccount;
 		        
 		       
 		    }
@@ -171,9 +190,9 @@ public class CustomerServiceImpl implements CustomerService {
 		            throw new CustomerNotFoundException("Invalid security key");
 		        }
 		        
-//		        // Find customer with provided customer ID
+		        // Find customer with provided customer ID
 		        if (customer.getWallet()==null) {
-		            throw new CustomerNotFoundException("Customer not found");
+		            throw new CustomerNotFoundException("Customer has no wallets...");
 		        }
 		        
 		        // Return customer's account list

@@ -19,6 +19,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -27,6 +28,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode
 public class Transection {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,10 +37,9 @@ public class Transection {
 	
 	@CreatedDate
 	@CreationTimestamp
-	@JsonFormat(pattern = "yyyy-mm-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private LocalDate transactionDate;
 	
-	@Min(value = 1)
 	private double ammount;
 	private String description;
 	
