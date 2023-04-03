@@ -63,10 +63,14 @@ http://localhost:8888/swagger-ui/
  <p align="center">
   <img src="https://github.com/pandeyneha0123/heroic-ice-5830/blob/main/Screenshot%202023-04-02%20185621.png" width="600" height="400" essibility text">
 </p>
+# Benificairy Controller
+<p align="center">
+  <img src="https://github.com/pandeyneha0123/heroic-ice-5830/blob/main/Screenshot_20230403_110359.png" width="1200" height="300" essibility text">
+</p>
 
 # Schema
  <p align="center">
-  <img src="https://github.com/pandeyneha0123/heroic-ice-5830/blob/main/Screenshot_20230403_110608.png" width="1000" height="300" essibility text">
+  <img src="https://github.com/pandeyneha0123/heroic-ice-5830/blob/main/Screenshot_20230403_110608.png" width="1200" height="300" essibility text">
 </p>
 
 # Collaborators
