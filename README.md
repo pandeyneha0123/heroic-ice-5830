@@ -1,6 +1,6 @@
 # heroic-ice-5830
 
-# Payment-Wallet-Services
+# EasyPay-Wallet-Services
 
 
  <p align="center">
