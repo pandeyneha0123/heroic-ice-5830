@@ -64,15 +64,22 @@ In conclusion, the EasyPay wallet service is a secure and reliable web service t
 - These are just a few potential functionalities that could be added to the wallet service. The actual features implemented would depend on the project requirements, stakeholder needs, and other considerations.
 
 # Tech Stack
-- Java
-- Hibernate
-- Spring Framework
-- Spring Sequrity
-- Spring Data JPA
-- MySQL
-- Maven
-- Swagger UI
 
+-  Java - A popular general-purpose programming language used to build a variety of applications, including web and mobile applications, games, and enterprise software.
+
+-  Hibernate - An object-relational mapping (ORM) library that simplifies the process of storing and retrieving data from a database by mapping Java objects to database tables.
+
+-  Spring Framework - A popular framework for building enterprise-grade Java applications. It provides a range of features, including dependency injection, transaction management, and web application development.
+
+- Spring Security - A powerful and highly customizable security framework for Java applications. It provides authentication and authorization features, as well as support for various security protocols and standards.
+
+- Spring Data JPA - A library that simplifies data access in Java applications by providing a set of APIs for working with databases. It is built on top of the Java Persistence API (JPA) and provides additional features, such as query generation and pagination.
+
+- MySQL - A popular open-source relational database management system. It is widely used for web applications, data warehousing, and e-commerce.
+
+- Maven - A build automation tool used primarily for Java projects. It helps manage dependencies and automate the build process, making it easier to build, test, and deploy applications.
+
+- Swagger UI - A tool for documenting and testing RESTful APIs. It provides an interactive interface for developers to explore and test API endpoints, as well as generate API documentation.
 # Installation & Run
  - if you want to run the API server, you should have to update the database configuration inside the application.properties file and Update the port number, username and password as per your local database configuration.
 
