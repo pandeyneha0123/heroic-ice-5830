@@ -95,7 +95,7 @@ In conclusion, the EasyPay wallet service is a secure and reliable web service t
 
 # API Root Endpoint
 ```
-https://localhost:8080/
+https://localhost:8888/
 ```
 ```
 http://localhost:8888/swagger-ui/
