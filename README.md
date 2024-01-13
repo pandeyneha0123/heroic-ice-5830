@@ -9,7 +9,7 @@
  
 EasyPay is a secure and reliable web service that provides users with the ability to manage their digital wallets. The service is built using Java, Spring Boot, MySQL, and Hibernate.
 
-The purpose of this project is to create a user-friendly platform that allows users to store, send, and receive digital currency securely. The wallet service provides users with the ability to view their balance, transaction history, and wallet details. The service also includes a secure authentication system to protect users' sensitive information.
+The purpose of this project is to create a user-friendly platform that allows users to store, send, and receive digital currency securely. The wallet service provides users with the ability to view their balance, transaction history, and wallet details.. The service also includes a secure authentication system to protect users' sensitive information.
 
 The project has several objectives, including:
 
